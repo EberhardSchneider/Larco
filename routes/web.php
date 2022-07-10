@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,5 +28,17 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::controller(UserController::class)->group(function () {
+    Route::get('/users', 'index');
+});
+
+Route::controller(ProjectController::class)->group(function () {
+    Route::get('/project', 'show');
+});
+
+// Route::get('/user/{id}', function () {
+//     return Inertia::render('Urtzser');
+// })->middleware(['auth', 'verified'])->name('user');
 
 require __DIR__.'/auth.php';

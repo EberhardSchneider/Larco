@@ -13,10 +13,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('instruments', function (Blueprint $table) {
+        Schema::create('rehearsals', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->foreignId('user_id')->nullable()->constrained();
+            $table->dateTime('date_begin');
+            $table->dateTime('date_end');
+            $table->foreignId('location_id')->nullable()->constrained();
+            $table->string('program');
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('instruments');
+        Schema::dropIfExists('rehearsals');
     }
 };

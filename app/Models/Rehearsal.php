@@ -5,12 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Instrument extends Model
+class Rehearsal extends Model
 {
     use HasFactory;
 
-    public function user()
+    protected $dates = ['date_begin', 'date_end'];
+
+    public function location()
     {
-        return $this->hasMany(User::class);
+        return $this->hasOne(Location::class);
     }
 }

@@ -44,6 +44,16 @@ class User extends Authenticatable
 
     public function instrument()
     {
-        return $this->hasOne(Instrument::class);
+        return $this->belongsTo(Instrument::class);
+    }
+
+    public function rehearsals()
+    {
+        return $this->belongsToMany(Rehearsal::class);
+    }
+
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class);
     }
 }
