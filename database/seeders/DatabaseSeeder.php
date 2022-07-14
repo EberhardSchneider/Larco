@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             InstrumentSeeder::class,
             LocationSeeder::class,
+            ProjectSeeder::class,
             RehearsalSeeder::class,
             UserSeeder::class,
             RehearsalUserSeeder::class,
-            ProjectSeeder::class
+            ProjectUserSeeder::class
         ]);
     }
 }

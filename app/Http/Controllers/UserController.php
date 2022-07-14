@@ -13,7 +13,8 @@ class UserController extends Controller
             return [
                 'name' => $u->name,
                 'instrument' => $u->instrument->name,
-                'rehearsals' => $u->rehearsals
+                'rehearsals' => $u->rehearsals,
+                'activated' => $u->activated !== null
             ];
         });
         return Inertia::render('Users', [

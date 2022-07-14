@@ -19,12 +19,14 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
             $table->foreignId('instrument_id')->nullable()->constrained();
             $table->string('address')->nullable();
             $table->string('mobile')->nullable();
             $table->string('phone')->nullable();
+            $table->string('activated_at')->nullable()->default(null);
         });
     }
 

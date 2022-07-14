@@ -16,6 +16,6 @@ class Project extends Model
 
     function rehearsals()
     {
-        return $this->hasMany(Rehearsal::class)
+        return $this->hasMany(Rehearsal::class);
     }
 }

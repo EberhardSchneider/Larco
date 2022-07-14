@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('program');
-            $table->foreignId('user_id')->nullable()->constrained();
             $table->foreignId('rehearsal_id')->nullable()->constrained();
             $table->timestamps();
         });

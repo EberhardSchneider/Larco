@@ -18,7 +18,11 @@ class ProjectSeeder extends Seeder
         $projects = [
             [
                 'name' => 'Herbst 2022',
-                'program' => "Verdi: Ouvertüra La forza del destino\nStockmeier: Die Andeutung\Beethoven 5",
+                'program' => "Verdi: Ouvertüra La forza del destino\nStockmeier: Die Andeutung\nBeethoven 5",
+            ],
+            [
+                'name' => 'Frühjahr 2023',
+                'program' => "TBD",
             ]
         ];
         DB::table('projects')->insert($projects);

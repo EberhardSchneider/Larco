@@ -17,7 +17,9 @@ return new class extends Migration
             $table->id();
             $table->dateTime('date_begin');
             $table->dateTime('date_end');
+            $table->boolean('full_day')->default(false);
             $table->foreignId('location_id')->nullable()->constrained();
+            $table->foreignId('project_id')->nullable()->constrained();
             $table->string('program');
             $table->timestamps();
         });

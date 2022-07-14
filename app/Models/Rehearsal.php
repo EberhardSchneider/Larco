@@ -15,4 +15,9 @@ class Rehearsal extends Model
     {
         return $this->hasOne(Location::class);
     }
+
+    public function project()
+    {
+        return $this->hasOne(Project::class);
+    }
 }
