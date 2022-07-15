@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
+import { Inertia } from '@inertiajs/inertia'
 import RehearsalMatrix from '@/Components/RehearsalMatrix';
 import Authenticated from '@/Layouts/Authenticated';
 import { Head } from '@inertiajs/inertia-react';
 
 export default function EditUserForm(props) {
     const [values, setValues] = useState({
+        id: props.id,
         name: props.name ?? '',
         address: props.address ?? '',
         instrumentId: props.instrument_id ?? '',
@@ -19,12 +21,11 @@ export default function EditUserForm(props) {
             ...values,
             [key]: value,
         }));
-        console.log(value);
     }
 
     function handleSubmit(e) {
         e.preventDefault();
-        Inertia.post('users', values);
+        Inertia.post('edit-user', values);
     }
 
     const instruments = props.instruments.map( (i, index) => {
@@ -124,6 +125,7 @@ export default function EditUserForm(props) {
                 ease-in-out
                 mb-3
                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"/>
+                <button type="submit">Speichern</button>
             </form>
         </div>
     );

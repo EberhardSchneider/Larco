@@ -1,13 +1,13 @@
 import React from 'react';
 
 export default function RehearsalMatrix({ users, rehearsals }) {
+    console.log({ users, rehearsals });
     const rehearsalsHead = rehearsals.map(r => {
         const date = new Date(r.date).toLocaleDateString();
         return (
             <th className='p-2'>{date}</th>
         )
     });
-
     const userRows = users.map(u => {
         const rehearsalCells = rehearsals.map(r => {
             const classname = 'w-4 h-4 self-center ' + (u.rehearsals.includes(r.id) ? 'bg-green-500' : 'bg-red-500');

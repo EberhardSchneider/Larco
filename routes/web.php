@@ -1,11 +1,15 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\EditUserController;
 use App\Http\Controllers\MailChimpController;
 use App\Http\Controllers\UserController;
+use App\Models\Rehearsal;
 use Illuminate\Foundation\Application;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
+use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,16 +33,15 @@ Route::get('/', function () {
 
 Route::get('/mail', [MailChimpController::class, 'index']);
 
-Route::get('/dashboard', function () {
-    return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::controller(UserController::class)->group(function () {
     Route::get('/users', 'index');
 });
 
 Route::controller(EditUserController::class)->group(function () {
-    Route::get('/edit-user', 'show');
+    Route::get('/edit-user', 'show')->name('edit-user');
+    Route::post('/edit-user', 'store');
 });
 
 

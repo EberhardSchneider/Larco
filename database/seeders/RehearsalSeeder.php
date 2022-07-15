@@ -31,7 +31,7 @@ class RehearsalSeeder extends Seeder
                 'full_day' => false,
                 'location_id' => 1,
                 'project_id' => 1,
-                'program' => "WTF"
+                'program' => "Stockmeier\nVerdi (Streicher)"
             ],
             [
                 'date_begin' => Carbon::create(2022, 9, 15, 19, 30),
@@ -39,7 +39,7 @@ class RehearsalSeeder extends Seeder
                 'date_end' => Carbon::create(2022, 9, 15, 22, 00),
                 'location_id' => 1,
                 'project_id' => 1,
-                'program' => "WTF"
+                'program' => "Verdi\nBeethoven III/IV (Tutti)"
             ],
             [
                 'date_begin' => Carbon::create(2022, 9, 17, 10, 00),
