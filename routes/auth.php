@@ -39,11 +39,12 @@ Route::middleware('guest')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-        
 
     Route::get('/change-password', function() {
         return Inertia::render('Auth/ChangePassword', [ 'user' => Auth::user() ]);
     })->middleware(['auth', 'verified'])->name('change-password');
+
+    Route::post('/change-password', [ConfirmablePasswordController::class, 'store'])->name('change-password.store');
     
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');
@@ -61,6 +62,12 @@ Route::middleware('auth')->group(function () {
 
     Route::post('confirm-password', [ConfirmablePasswordController::class, 'store']);
 
+    Route::post('chnage-password', [ConfirmablePasswordController::class, 'change'])->name('password.change');
+        
+    Route::get('confirmation', function() {
+        return Inertia::render('Auth/Confirmation');
+    })->name('confirmation');
+    
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 });

@@ -10,18 +10,21 @@ export default function Authenticated({ auth, header, children }) {
     return (
         <div className="min-h-screen bg-gray-100">
             <nav className="bg-white border-b border-gray-100">
-                <div className="w-2/3 mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="w-full m:w-2/3 m:mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-24">
                         <div className="flex">
-                            <div className="shrink-0 flex items-center">
+                            <div className="shrink-0 flex m:items-center">
                                 <Link href="/">
-                                    <ApplicationLogo className="block h-20 w-auto text-gray-500" />
+                                    <ApplicationLogo className="block mt-4 h-16 m:h-20 m:mt-0 w-auto text-gray-500" />
                                 </Link>
                             </div>
 
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink href={route('dashboard')} active={route().current('dashboard')}>
                                     Dashboard
+                                </NavLink>
+                                <NavLink href={route('presence')} active={route().current('presence')}>
+                                    Anwesenheit pflegen
                                 </NavLink>
                             </div>
                         </div>
@@ -68,12 +71,12 @@ export default function Authenticated({ auth, header, children }) {
                             </div>
                         </div>
 
-                        <div className="-mr-2 flex items-center sm:hidden">
+                        <div className="mr-6 flex items-center justify-end  sm:hidden">
                             <button
                                 onClick={() => setShowingNavigationDropdown((previousState) => !previousState)}
                                 className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out"
                             >
-                                <svg className="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
+                                <svg className="h-8 w-8" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path
                                         className={!showingNavigationDropdown ? 'inline-flex' : 'hidden'}
                                         strokeLinecap="round"
@@ -98,6 +101,9 @@ export default function Authenticated({ auth, header, children }) {
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink href={route('dashboard')} active={route().current('dashboard')}>
                             Dashboard
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href={route('presence')} active={route().current('presence')}>
+                            Anwesenheit pflegen
                         </ResponsiveNavLink>
                     </div>
 

@@ -49,7 +49,7 @@ class User extends Authenticatable
 
     public function rehearsals()
     {
-        return $this->belongsToMany(Rehearsal::class);
+        return $this->belongsToMany(Rehearsal::class)->withPivot('status_id');
     }
 
     public function projects()

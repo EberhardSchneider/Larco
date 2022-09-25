@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { Inertia } from '@inertiajs/inertia'
-import RehearsalMatrix from '@/Components/RehearsalMatrix';
-import Authenticated from '@/Layouts/Authenticated';
-import { Head } from '@inertiajs/inertia-react';
+
 
 export default function EditUserForm(props) {
     const [values, setValues] = useState({

@@ -8,9 +8,9 @@ import { Head, useForm } from '@inertiajs/inertia-react';
 
 export default function ChangePassword() {
     const { data, setData, post, processing, errors, reset } = useForm({
-        old_password: '',
+        password: '',
         new_password: '',
-        new_password_valid: '',
+        new_password_confirmation: '',
 
     });
 
@@ -26,8 +26,7 @@ export default function ChangePassword() {
 
     const submit = (e) => {
         e.preventDefault();
-
-        post(route('password.confirm'));
+        post(route('password.change'), data);
     };
 
     return (
@@ -46,7 +45,7 @@ export default function ChangePassword() {
 
                     <Input
                         type="password"
-                        name="old_password"
+                        name="password"
                         value={data.password}
                         className="mt-1 block w-full"
                         isFocused={true}
@@ -60,7 +59,7 @@ export default function ChangePassword() {
                     <Input
                         type="password"
                         name="new_password"
-                        value={data.password}
+                        value={data.new_password}
                         className="mt-1 block w-full"
                         isFocused={true}
                         handleChange={onHandleChange}
@@ -72,8 +71,8 @@ export default function ChangePassword() {
 
                     <Input
                         type="password"
-                        name="new_password_validation"
-                        value={data.password}
+                        name="new_password_confirmation"
+                        value={data.new_password_confirmation}
                         className="mt-1 block w-full"
                         isFocused={true}
                         handleChange={onHandleChange}

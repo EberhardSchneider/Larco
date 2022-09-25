@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('rehearsal_user', function (Blueprint $table) {
             $table->integer('rehearsal_id');
             $table->integer('user_id');
+            $table->integer('status_id')->default(0);
         });
     }
 

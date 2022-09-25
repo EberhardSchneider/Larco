@@ -8,6 +8,7 @@ use App\Models\Rehearsal;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Log;
 use Inertia\Inertia;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -23,6 +24,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function () {
+	Log::info('Login in...');
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -35,8 +37,12 @@ Route::get('/mail', [MailChimpController::class, 'index']);
 
 Route::get('/dashboard', [DashboardController::class, 'show'])->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/presence', [DashboardController::class, 'presence'])->middleware(['auth', 'verified'])->name('presence');
+
+
 Route::controller(UserController::class)->group(function () {
     Route::get('/users', 'index');
+    Route::post('/user/store', 'store');
 });
 
 Route::controller(EditUserController::class)->group(function () {

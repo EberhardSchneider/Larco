@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use Inertia\Inertia;
 
@@ -41,5 +42,20 @@ class ConfirmablePasswordController extends Controller
         $request->session()->put('auth.password_confirmed_at', time());
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function change(Request $request)
+    {
+        $user = Auth::user();
+        if (!Hash::check($request->password, $user->password)) {
+            return redirect()->back()->withErrors(['password' => __('auth.password')]);
+        } else if ($request->new_password !== $request->new_password_confirmation) {
+            return redirect()->back()->withErrors(['msg' => 'New password and confirmation do not match']);
+        } else 
+        {
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return redirect()->route('confirmation')->with('title', 'Passwort geändert.')->with('message', 'Ihr Passwort wurde erfolgreich geändert.');
+        }
     }
 }

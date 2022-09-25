@@ -18,7 +18,7 @@ class ProjectController extends Controller
                 'name' => $u->name,
                 'instrument' => $u->instrument->name,
                 'instrument_id' => $u->instrument->id,
-                'rehearsals' => $u->rehearsals->map(function($r) { return $r->id; }),
+                'rehearsals' => $u->rehearsals->map(function($r) { return $r->pivot->status_id; }),
                 'activated' => $u->activated_at !== null
             ];
         });

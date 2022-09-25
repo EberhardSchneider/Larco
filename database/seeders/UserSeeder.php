@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
         ]);
         $user->save();
         $user = User::create([
-            'name' => 'Logger',
+            'name' => 'Carlos Kleiber',
             'email' => 'test@test.de',
             'password' => '$2y$10$/5iq89QE5Su9mmhsErE4zOl4k1VIBnskhhf14CA8R/efK4x7Z.fay',
             'instrument_id' => 14,
